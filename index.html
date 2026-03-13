@@ -7,7 +7,7 @@
     <!-- Inter font (modern, clean) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 (free icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -24,14 +24,15 @@
             --white: #ffffff;
             --gray-light: #f3f4f6;
             --gray-mid: #9ca3af;
-            --accent: #2563eb; /* subtle blue accent for links/hovers, optional */
+            --gray-dark: #4b5563;
+            --accent: #2563eb;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             color: var(--black);
             background-color: var(--white);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* ---------- TYPOGRAPHY ---------- */
@@ -41,26 +42,30 @@
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.75rem;
             letter-spacing: -0.02em;
+            font-weight: 800;
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             letter-spacing: -0.01em;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .section-subhead {
             font-size: 1.25rem;
             font-weight: 400;
-            color: var(--gray-mid);
+            color: var(--gray-dark);
             max-width: 700px;
+            margin-bottom: 3rem;
         }
 
         /* ---------- LAYOUT ---------- */
@@ -71,25 +76,32 @@
         }
 
         section {
-            padding: 5rem 0;
+            padding: 7rem 0;
         }
 
-        /* navy backgrounds */
+        /* Subtle background pattern for depth */
+        .bg-light {
+            background-color: var(--gray-light);
+            background-image: 
+                radial-gradient(rgba(26, 43, 76, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
         .bg-navy {
             background-color: var(--navy);
             color: var(--white);
+            position: relative;
         }
         .bg-navy h2, .bg-navy .section-subhead {
             color: var(--white);
+        }
+        .bg-navy .section-subhead {
+            color: rgba(255,255,255,0.7);
         }
 
         .bg-black {
             background-color: var(--black);
             color: var(--white);
-        }
-
-        .bg-light {
-            background-color: var(--gray-light);
         }
 
         /* ---------- HEADER / NAV ---------- */
@@ -124,6 +136,7 @@
             text-decoration: none;
             color: var(--black);
             transition: color 0.2s;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -146,6 +159,7 @@
             transition: all 0.2s;
             border: none;
             cursor: pointer;
+            font-size: 0.95rem;
         }
 
         .btn-primary {
@@ -154,6 +168,8 @@
         }
         .btn-primary:hover {
             background-color: #0f1f3b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .btn-outline {
@@ -164,11 +180,12 @@
         .btn-outline:hover {
             background-color: var(--white);
             color: var(--navy);
+            transform: translateY(-2px);
         }
 
         /* ---------- HERO SECTION ---------- */
         .hero {
-            padding: 6rem 0;
+            padding: 5rem 0 3rem 0;
         }
 
         .hero-grid {
@@ -186,6 +203,7 @@
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
         }
 
         .hero p {
@@ -193,6 +211,8 @@
             margin: 1.5rem 0 2rem;
             opacity: 0.9;
             max-width: 550px;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         .hero-buttons {
@@ -218,6 +238,8 @@
         .stat-label {
             font-size: 0.9rem;
             opacity: 0.7;
+            font-weight: 400;
+            letter-spacing: 0.02em;
         }
 
         .hero-visual {
@@ -238,7 +260,76 @@
             height: 80px;
         }
 
-        /* ---------- VALUE PROPS / DIFFERENTIATORS ---------- */
+        /* ---------- BY THE NUMBERS SECTION (NEW - N-IX style) ---------- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            text-align: left;
+        }
+
+        .stat-card .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-dark);
+            text-transform: none;
+            letter-spacing: normal;
+            opacity: 1;
+        }
+
+        /* ---------- INDUSTRIES SECTION (NEW - icon grid) ---------- */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .industry-card {
+            background: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+        }
+
+        .industry-icon {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .industry-card h4 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .industry-card p {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+        }
+
+        /* ---------- VALUE PROPS ---------- */
         .value-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -247,11 +338,16 @@
         }
 
         .value-card {
-            padding: 2rem;
+            padding: 2.5rem;
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
         }
 
         .value-icon {
@@ -261,26 +357,51 @@
         }
 
         .value-card h3 {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .value-card p {
-            color: #4b5563;
+            color: var(--gray-dark);
+            line-height: 1.6;
         }
 
-        /* ---------- SERVICES PREVIEW / PAGE ---------- */
+        /* ---------- SERVICES SECTION ---------- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+        }
+
+        /* Featured service (first one) gets special treatment */
+        .service-item:first-child {
+            background: var(--navy);
+            color: var(--white);
+            transform: scale(1.02);
+            border: none;
+        }
+
+        .service-item:first-child .service-icon,
+        .service-item:first-child h3,
+        .service-item:first-child li i {
+            color: var(--white);
+        }
+
+        .service-item:first-child ul li {
+            color: rgba(255,255,255,0.9);
         }
 
         .service-item {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem;
+            border-radius: 16px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
             border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .service-item:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
         }
 
         .service-icon {
@@ -291,19 +412,25 @@
 
         .service-item h3 {
             margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-item p {
+            color: var(--gray-dark);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .service-item ul {
             list-style: none;
-            margin-top: 1.5rem;
         }
 
         .service-item li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .service-item li i {
@@ -315,7 +442,7 @@
         /* ---------- PROJECT CARDS ---------- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -330,11 +457,12 @@
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
         }
 
         .project-content {
-            padding: 2rem;
+            padding: 2.5rem;
         }
 
         .project-tags {
@@ -346,18 +474,19 @@
 
         .project-tag {
             background: var(--gray-light);
-            padding: 0.25rem 0.75rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--black);
+            letter-spacing: 0.02em;
         }
 
         .project-stats {
             display: flex;
-            gap: 2rem;
-            margin: 1.5rem 0 0;
-            padding-top: 1.5rem;
+            gap: 2.5rem;
+            margin: 2rem 0 0;
+            padding-top: 2rem;
             border-top: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -366,18 +495,20 @@
             flex-direction: column;
         }
 
+        .project-stat .stat-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
         .project-stat .stat-label {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.02em;
+            opacity: 0.7;
         }
 
-        .project-stat .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        /* ---------- CONTACT PAGE ---------- */
+        /* ---------- CONTACT SECTION ---------- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -394,6 +525,7 @@
         .contact-info h3 {
             color: var(--white);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .contact-detail {
@@ -410,7 +542,7 @@
 
         .contact-form {
             background: var(--white);
-            padding: 2rem;
+            padding: 3rem;
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
@@ -423,16 +555,18 @@
             display: block;
             font-weight: 500;
             margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.875rem 1rem;
+            padding: 1rem 1rem;
             border: 1px solid var(--gray-mid);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
+            transition: border-color 0.2s;
         }
 
         .form-group input:focus,
@@ -445,7 +579,7 @@
         footer {
             background-color: var(--black);
             color: var(--white);
-            padding: 3rem 0;
+            padding: 4rem 0;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -464,6 +598,7 @@
             color: var(--gray-mid);
             text-decoration: none;
             font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
         .footer-links a:hover {
@@ -471,16 +606,31 @@
         }
 
         /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 1100px) {
+            .services-grid,
+            .project-grid,
+            .stats-grid,
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 900px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
+            h1 { font-size: 2.75rem; }
+            h2 { font-size: 2.25rem; }
+            
+            section { padding: 5rem 0; }
 
             .hero-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .value-grid {
+            .value-grid,
+            .stats-grid,
+            .services-grid,
+            .project-grid,
+            .industries-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -495,6 +645,10 @@
             .mobile-menu-btn {
                 display: block;
             }
+
+            .service-item:first-child {
+                transform: none;
+            }
         }
 
         @media (max-width: 600px) {
@@ -506,12 +660,23 @@
                 text-align: center;
             }
 
-            .project-grid {
-                grid-template-columns: 1fr;
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stat-card .stat-number {
+                font-size: 3rem;
             }
         }
 
-        /* simple mobile menu toggle (you can expand with JS later) */
+        /* mobile menu */
         .nav-links.active {
             display: flex;
             flex-direction: column;
@@ -522,6 +687,7 @@
             background: var(--white);
             padding: 2rem;
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            gap: 1rem;
         }
     </style>
 </head>
@@ -530,8 +696,7 @@
     <header>
         <div class="container navbar">
             <div class="logo">
-                <!-- Replace src with your actual logo file -->
-                <img src="aclogo1-transformed.jpeg" alt="Acension L.L.C. logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="logo.png" alt="Acension L.L.C. logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display:none; font-weight:800; font-size:1.5rem; color:var(--navy);">Acension</span>
             </div>
             <nav class="nav-links" id="navLinks">
@@ -547,7 +712,7 @@
     </header>
 
     <main>
-        <!-- HOME SECTION (Hero + value props) -->
+        <!-- HERO SECTION -->
         <section id="home" class="bg-navy">
             <div class="container hero">
                 <div class="hero-grid">
@@ -565,12 +730,12 @@
                                 <span class="stat-label">Years experience</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number">50k+</span>
+                                <span class="stat-number">90k+</span>
                                 <span class="stat-label">Devices migrated</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number">100%</span>
-                                <span class="stat-label">Security focused</span>
+                                <span class="stat-number">100k+</span>
+                                <span class="stat-label">Endpoints managed</span>
                             </div>
                         </div>
                     </div>
@@ -580,8 +745,7 @@
                             <div class="grid-box"></div><div class="grid-box"></div><div class="grid-box"></div>
                             <div class="grid-box"></div><div class="grid-box"></div><div class="grid-box"></div>
                         </div>
-                        <!-- subtle tech pattern -->
-                        <div style="margin-top:2rem; font-family: monospace; opacity:0.3; font-size:0.8rem;">
+                        <div style="margin-top:2rem; font-family: monospace; opacity:0.3; font-size:0.8rem; text-align:center;">
                             azure · aws · entraid · intune · powershell · n8n
                         </div>
                     </div>
@@ -589,40 +753,99 @@
             </div>
         </section>
 
-        <!-- VALUE PROPS / differentiators (white background) -->
+        <!-- BY THE NUMBERS SECTION (NEW - N-IX style) -->
+        <section class="container">
+            <h2>By the numbers</h2>
+            <p class="section-subhead">Proven results from enterprise-scale work.</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18+</div>
+                    <div class="stat-label">Years of infrastructure experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90k+</div>
+                    <div class="stat-label">Devices migrated to Windows 11</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100k+</div>
+                    <div class="stat-label">Endpoints under modern management</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Security-focused by design</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INDUSTRIES WE SERVE (NEW) -->
+        <section class="bg-light">
+            <div class="container">
+                <h2>Industries we serve</h2>
+                <p class="section-subhead">Deep expertise in regulated and complex environments.</p>
+                <div class="industries-grid">
+                    <div class="industry-card">
+                        <div class="industry-icon"><i class="fas fa-building"></i></div>
+                        <h4>Government</h4>
+                        <p>State & local agencies</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon"><i class="fas fa-landmark"></i></div>
+                        <h4>Financial</h4>
+                        <p>Banking & insurance</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon"><i class="fas fa-hospital"></i></div>
+                        <h4>Healthcare</h4>
+                        <p>Providers & systems</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon"><i class="fas fa-cart-shopping"></i></div>
+                        <h4>Retail</h4>
+                        <p>POS & omnichannel</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon"><i class="fas fa-industry"></i></div>
+                        <h4>Manufacturing</h4>
+                        <p>OT & IIoT</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUE PROPS -->
         <section class="container">
             <h2>Why partner with Acension?</h2>
             <div class="value-grid">
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-building"></i></div>
                     <h3>Enterprise Experience</h3>
-                    <p>18+ years solving complex challenges at scale — from 50,000+ device migrations to hybrid cloud strategy.</p>
+                    <p>18+ years solving complex challenges at scale — from 90,000+ device migrations to hybrid cloud strategy.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-lock"></i></div>
-                    <h3>Security & Compliance</h3>
-                    <p>Security-first infrastructure. We design with compliance built in, not bolted on.</p>
+                    <h3>Security-First Infrastructure</h3>
+                    <p>We design with compliance built in, not bolted on. Every solution starts with security.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-robot"></i></div>
                     <h3>Automation-Driven</h3>
-                    <p>Reduce costs by making your systems run smarter — PowerShell, n8n, and infrastructure as code.</p>
+                    <p>Reduce operational costs by making your systems run smarter — PowerShell, n8n, and infrastructure as code.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SERVICES SECTION (detailed) -->
+        <!-- SERVICES SECTION -->
         <section id="services" class="bg-light">
             <div class="container">
                 <h2>Core services</h2>
                 <p class="section-subhead">Practical, high-impact IT capabilities for modern organizations.</p>
 
-                <div class="services-grid" style="margin-top:3rem;">
-                    <!-- service 1 -->
+                <div class="services-grid">
+                    <!-- service 1 - featured -->
                     <div class="service-item">
                         <div class="service-icon"><i class="fas fa-cloud-arrow-up"></i></div>
                         <h3>Infrastructure Strategy & Modernization</h3>
-                        <p>Cloud migration (Azure/AWS), hybrid identity (Entra ID), virtual environment design.</p>
+                        <p>Accelerate your cloud journey with enterprise-proven Azure and AWS migrations, hybrid identity, and virtual environment design.</p>
                         <ul>
                             <li><i class="fas fa-circle-check"></i> Azure / AWS migrations</li>
                             <li><i class="fas fa-circle-check"></i> Entra ID / hybrid identity</li>
@@ -633,7 +856,7 @@
                     <div class="service-item">
                         <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
                         <h3>Managed IT & Security</h3>
-                        <p>Proactive monitoring, endpoint management, and robust disaster recovery planning.</p>
+                        <p>Proactive monitoring, endpoint management, and robust disaster recovery planning that keeps your business running.</p>
                         <ul>
                             <li><i class="fas fa-circle-check"></i> Zabbix / Grafana monitoring</li>
                             <li><i class="fas fa-circle-check"></i> Intune / MECM endpoint mgmt</li>
@@ -644,7 +867,7 @@
                     <div class="service-item">
                         <div class="service-icon"><i class="fas fa-fingerprint"></i></div>
                         <h3>Identity & Access Management</h3>
-                        <p>Secure, compliant access with MFA, SSO, and conditional access policies.</p>
+                        <p>Secure, compliant access with MFA, SSO, and conditional access policies that protect without slowing work.</p>
                         <ul>
                             <li><i class="fas fa-circle-check"></i> Microsoft Entra ID / ADFS</li>
                             <li><i class="fas fa-circle-check"></i> MFA / SSO implementation</li>
@@ -655,7 +878,7 @@
                     <div class="service-item">
                         <div class="service-icon"><i class="fas fa-gears"></i></div>
                         <h3>Automation & Efficiency</h3>
-                        <p>Reduce manual overhead with PowerShell, Bash, and n8n workflow automation.</p>
+                        <p>Reduce manual overhead and eliminate errors with PowerShell, Bash, and n8n workflow automation.</p>
                         <ul>
                             <li><i class="fas fa-circle-check"></i> PowerShell / Bash scripting</li>
                             <li><i class="fas fa-circle-check"></i> n8n + AI integrations</li>
@@ -666,18 +889,29 @@
                     <div class="service-item">
                         <div class="service-icon"><i class="fas fa-arrows-spin"></i></div>
                         <h3>Technology Lifecycle Management</h3>
-                        <p>Full-spectrum hardware and software deployment, from servers to POS systems.</p>
+                        <p>Full-spectrum hardware and software deployment, from servers and switches to POS systems.</p>
                         <ul>
                             <li><i class="fas fa-circle-check"></i> Wireless / switching / firewalls</li>
                             <li><i class="fas fa-circle-check"></i> MDT / PDQ / software deployment</li>
                             <li><i class="fas fa-circle-check"></i> End-to-end lifecycle management</li>
                         </ul>
                     </div>
+                    <!-- service 6 - empty but maintains grid -->
+                    <div class="service-item" style="opacity:0.95;">
+                        <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Cloud Cost Optimization</h3>
+                        <p>Rightsize your cloud spend without sacrificing performance or reliability.</p>
+                        <ul>
+                            <li><i class="fas fa-circle-check"></i> Azure/AWS cost analysis</li>
+                            <li><i class="fas fa-circle-check"></i> Reserved instance planning</li>
+                            <li><i class="fas fa-circle-check"></i> Resource right-sizing</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECTS SECTION (case studies) -->
+        <!-- PROJECTS SECTION -->
         <section id="projects" class="container">
             <h2>Key projects & achievements</h2>
             <p class="section-subhead">Real results from enterprise-scale work.</p>
@@ -692,8 +926,8 @@
                             <span class="project-tag">PowerShell</span>
                             <span class="project-tag">Azure AD</span>
                         </div>
-                        <p><strong>Challenge:</strong> Upgrade 50,000+ devices securely with minimal disruption.</p>
-                        <p style="margin-top:0.75rem;"><strong>Solution:</strong> Architected deployment rings with Intune, automated reporting with PowerShell, served as primary escalation engineer.</p>
+                        <p><strong>Challenge:</strong> Upgrade 90,000+ devices securely with minimal disruption.</p>
+                        <p style="margin-top:0.75rem; color:var(--gray-dark);"><strong>Solution:</strong> Architected deployment rings with Intune, automated reporting with PowerShell.</p>
                         <div class="project-stats">
                             <div class="project-stat">
                                 <span class="stat-number">40%</span>
@@ -707,7 +941,7 @@
                     </div>
                 </div>
 
-                <!-- Active Directory Cloud Migration -->
+                <!-- Active Directory Migration -->
                 <div class="project-card">
                     <div class="project-content">
                         <h3>Active Directory → Entra ID Migration</h3>
@@ -717,14 +951,14 @@
                             <span class="project-tag">Group Policy</span>
                         </div>
                         <p><strong>Challenge:</strong> Migrate multi-domain on-prem AD to cloud-native identity.</p>
-                        <p style="margin-top:0.75rem;"><strong>Solution:</strong> Hybrid identity with Azure AD Connect, GPO migration, conditional access policies.</p>
+                        <p style="margin-top:0.75rem; color:var(--gray-dark);"><strong>Solution:</strong> Hybrid identity with Azure AD Connect, GPO migration.</p>
                         <div class="project-stats">
                             <div class="project-stat">
                                 <span class="stat-number">30%</span>
                                 <span class="stat-label">admin overhead reduction</span>
                             </div>
                             <div class="project-stat">
-                                <span class="stat-number">100%</span>
+                                <span class="stat-number">99.9%</span>
                                 <span class="stat-label">uptime</span>
                             </div>
                         </div>
@@ -740,11 +974,11 @@
                             <span class="project-tag">MECM</span>
                             <span class="project-tag">Autopilot</span>
                         </div>
-                        <p><strong>Challenge:</strong> Transition 7,000+ endpoints to modern management.</p>
-                        <p style="margin-top:0.75rem;"><strong>Solution:</strong> Co-management, Autopilot profiles, compliance policies, and automated enrollment.</p>
+                        <p><strong>Challenge:</strong> Transition 90,000+ endpoints to modern management.</p>
+                        <p style="margin-top:0.75rem; color:var(--gray-dark);"><strong>Solution:</strong> Co-management, Autopilot profiles, compliance policies.</p>
                         <div class="project-stats">
                             <div class="project-stat">
-                                <span class="stat-number">7,000+</span>
+                                <span class="stat-number">90,000+</span>
                                 <span class="stat-label">devices</span>
                             </div>
                             <div class="project-stat">
@@ -763,16 +997,15 @@
                 <div class="contact-grid">
                     <div class="contact-info">
                         <h3>Let's start the conversation</h3>
-                        <p style="margin-bottom:2rem; opacity:0.8;">Tell us about your infrastructure goals. We'll respond within one business day.</p>
+                        <p style="margin-bottom:2rem; opacity:0.8; font-size:1.1rem;">Tell us about your infrastructure goals. We'll respond within one business day.</p>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
-                            <span>contact@acension.pro</span>
+                            <span style="font-size:1.1rem;">contact@acension.pro</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-location-dot"></i>
-                            <span>State of Florida (remote / nationwide)</span>
+                            <span style="font-size:1.1rem;">State of Florida (remote / nationwide)</span>
                         </div>
-                        <!-- CJIS/FedRAMP block removed -->
                     </div>
 
                     <div class="contact-form">
@@ -796,7 +1029,6 @@
                             <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
                         </form>
                         <p style="font-size:0.8rem; margin-top:1.5rem; color:var(--gray-mid);">
-                            <i class="fas fa-code"></i> This form is ready for your n8n automation later.
                         </p>
                     </div>
                 </div>
@@ -808,14 +1040,14 @@
     <footer>
         <div class="container footer-content">
             <div class="logo">
-                <span style="font-weight:800; font-size:1.2rem;">Acension L.L.C.</span>
+                <span style="font-weight:700; font-size:1.2rem; letter-spacing:0.5px;">ACENSION L.L.C.</span>
             </div>
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
             <div style="font-size:0.8rem; color:var(--gray-mid);">
                 © 2026 Acension L.L.C.
@@ -823,9 +1055,7 @@
         </div>
     </footer>
 
-    <!-- small JS for mobile menu (simple) -->
     <script>
-        // optional: close menu when clicking a link (for mobile)
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
