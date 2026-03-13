@@ -3,20 +3,835 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ascension</title>
+    <title>Acension L.L.C. — Enterprise IT Infrastructure</title>
+    <!-- Inter font (modern, clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & VARIABLES ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2b4c;
+            --black: #111827;
+            --white: #ffffff;
+            --gray-light: #f3f4f6;
+            --gray-mid: #9ca3af;
+            --accent: #2563eb; /* subtle blue accent for links/hovers, optional */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.5;
+        }
+
+        /* ---------- TYPOGRAPHY ---------- */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subhead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--gray-mid);
+            max-width: 700px;
+        }
+
+        /* ---------- LAYOUT ---------- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* navy backgrounds */
+        .bg-navy {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+        .bg-navy h2, .bg-navy .section-subhead {
+            color: var(--white);
+        }
+
+        .bg-black {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .bg-light {
+            background-color: var(--gray-light);
+        }
+
+        /* ---------- HEADER / NAV ---------- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ---------- BUTTONS ---------- */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: #0f1f3b;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--navy);
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
+            padding: 6rem 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 2rem;
+            opacity: 0.9;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .hero-visual {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .abstract-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1rem;
+        }
+        .grid-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            height: 80px;
+        }
+
+        /* ---------- VALUE PROPS / DIFFERENTIATORS ---------- */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--navy);
+        }
+
+        .value-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .value-card p {
+            color: #4b5563;
+        }
+
+        /* ---------- SERVICES PREVIEW / PAGE ---------- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item h3 {
+            margin-bottom: 1rem;
+        }
+
+        .service-item ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-item li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-item li i {
+            color: var(--navy);
+            font-size: 0.875rem;
+            width: 1.25rem;
+        }
+
+        /* ---------- PROJECT CARDS ---------- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--gray-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .project-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-stat .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .project-stat .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* ---------- CONTACT PAGE ---------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+        }
+
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .contact-detail {
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            width: 2rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--gray-mid);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--navy);
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-mid);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                text-align: center;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* simple mobile menu toggle (you can expand with JS later) */
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
+    <!-- HEADER -->
     <header>
-        <h1>Enterprise expertise · trusted solutions</h1>
+        <div class="container navbar">
+            <div class="logo">
+                <!-- Replace src with your actual logo file -->
+                <img src="logo.png" alt="Acension L.L.C. logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; font-weight:800; font-size:1.5rem; color:var(--navy);">Acension</span>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </header>
-    <section class="value-card">
-        <h2>Security & Reliability</h2>
-        <p>Your trusted partner in delivering innovative solutions.</p>
-        <!-- Compliance-specific text removed -->
-    </section>
+
+    <main>
+        <!-- HOME SECTION (Hero + value props) -->
+        <section id="home" class="bg-navy">
+            <div class="container hero">
+                <div class="hero-grid">
+                    <div>
+                        <span class="hero-badge"><i class="fas fa-shield-alt" style="margin-right:0.5rem;"></i> Security-focused · enterprise expertise</span>
+                        <h1>Enterprise-grade IT infrastructure, built for your growth.</h1>
+                        <p>Acension L.L.C. delivers the reliability, security, and strategic automation of a Fortune 500 IT department—tailored for government and business.</p>
+                        <div class="hero-buttons">
+                            <a href="#services" class="btn btn-primary">Explore services</a>
+                            <a href="#projects" class="btn btn-outline">View projects</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">18+</span>
+                                <span class="stat-label">Years experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50k+</span>
+                                <span class="stat-label">Devices migrated</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Security focused</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="abstract-grid">
+                            <div class="grid-box"></div><div class="grid-box"></div><div class="grid-box"></div>
+                            <div class="grid-box"></div><div class="grid-box"></div><div class="grid-box"></div>
+                            <div class="grid-box"></div><div class="grid-box"></div><div class="grid-box"></div>
+                        </div>
+                        <!-- subtle tech pattern -->
+                        <div style="margin-top:2rem; font-family: monospace; opacity:0.3; font-size:0.8rem;">
+                            azure · aws · entraid · intune · powershell · n8n
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUE PROPS / differentiators (white background) -->
+        <section class="container">
+            <h2>Why partner with Acension?</h2>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-building"></i></div>
+                    <h3>Enterprise Experience</h3>
+                    <p>18+ years solving complex challenges at scale — from 50,000+ device migrations to hybrid cloud strategy.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Security & Compliance</h3>
+                    <p>Security-first infrastructure. We design with compliance built in, not bolted on.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Automation-Driven</h3>
+                    <p>Reduce costs by making your systems run smarter — PowerShell, n8n, and infrastructure as code.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION (detailed) -->
+        <section id="services" class="bg-light">
+            <div class="container">
+                <h2>Core services</h2>
+                <p class="section-subhead">Practical, high-impact IT capabilities for modern organizations.</p>
+
+                <div class="services-grid" style="margin-top:3rem;">
+                    <!-- service 1 -->
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+                        <h3>Infrastructure Strategy & Modernization</h3>
+                        <p>Cloud migration (Azure/AWS), hybrid identity (Entra ID), virtual environment design.</p>
+                        <ul>
+                            <li><i class="fas fa-circle-check"></i> Azure / AWS migrations</li>
+                            <li><i class="fas fa-circle-check"></i> Entra ID / hybrid identity</li>
+                            <li><i class="fas fa-circle-check"></i> VMware, Proxmox, Hyper-V</li>
+                        </ul>
+                    </div>
+                    <!-- service 2 -->
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+                        <h3>Managed IT & Security</h3>
+                        <p>Proactive monitoring, endpoint management, and robust disaster recovery planning.</p>
+                        <ul>
+                            <li><i class="fas fa-circle-check"></i> Zabbix / Grafana monitoring</li>
+                            <li><i class="fas fa-circle-check"></i> Intune / MECM endpoint mgmt</li>
+                            <li><i class="fas fa-circle-check"></i> Disaster recovery & testing</li>
+                        </ul>
+                    </div>
+                    <!-- service 3 -->
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-fingerprint"></i></div>
+                        <h3>Identity & Access Management</h3>
+                        <p>Secure, compliant access with MFA, SSO, and conditional access policies.</p>
+                        <ul>
+                            <li><i class="fas fa-circle-check"></i> Microsoft Entra ID / ADFS</li>
+                            <li><i class="fas fa-circle-check"></i> MFA / SSO implementation</li>
+                            <li><i class="fas fa-circle-check"></i> Conditional access & governance</li>
+                        </ul>
+                    </div>
+                    <!-- service 4 -->
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-gears"></i></div>
+                        <h3>Automation & Efficiency</h3>
+                        <p>Reduce manual overhead with PowerShell, Bash, and n8n workflow automation.</p>
+                        <ul>
+                            <li><i class="fas fa-circle-check"></i> PowerShell / Bash scripting</li>
+                            <li><i class="fas fa-circle-check"></i> n8n + AI integrations</li>
+                            <li><i class="fas fa-circle-check"></i> Infrastructure as code (Terraform)</li>
+                        </ul>
+                    </div>
+                    <!-- service 5 -->
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-arrows-spin"></i></div>
+                        <h3>Technology Lifecycle Management</h3>
+                        <p>Full-spectrum hardware and software deployment, from servers to POS systems.</p>
+                        <ul>
+                            <li><i class="fas fa-circle-check"></i> Wireless / switching / firewalls</li>
+                            <li><i class="fas fa-circle-check"></i> MDT / PDQ / software deployment</li>
+                            <li><i class="fas fa-circle-check"></i> End-to-end lifecycle management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION (case studies) -->
+        <section id="projects" class="container">
+            <h2>Key projects & achievements</h2>
+            <p class="section-subhead">Real results from enterprise-scale work.</p>
+
+            <div class="project-grid">
+                <!-- Windows 11 Migration -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Windows 11 Enterprise Migration</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Intune</span>
+                            <span class="project-tag">PowerShell</span>
+                            <span class="project-tag">Azure AD</span>
+                        </div>
+                        <p><strong>Challenge:</strong> Upgrade 50,000+ devices securely with minimal disruption.</p>
+                        <p style="margin-top:0.75rem;"><strong>Solution:</strong> Architected deployment rings with Intune, automated reporting with PowerShell, served as primary escalation engineer.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">faster deployment</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Directory Cloud Migration -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Active Directory → Entra ID Migration</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Azure AD</span>
+                            <span class="project-tag">AD Connect</span>
+                            <span class="project-tag">Group Policy</span>
+                        </div>
+                        <p><strong>Challenge:</strong> Migrate multi-domain on-prem AD to cloud-native identity.</p>
+                        <p style="margin-top:0.75rem;"><strong>Solution:</strong> Hybrid identity with Azure AD Connect, GPO migration, conditional access policies.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-number">30%</span>
+                                <span class="stat-label">admin overhead reduction</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">uptime</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modern Device Management -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Modern Device Management (SCCM → Intune)</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Intune</span>
+                            <span class="project-tag">MECM</span>
+                            <span class="project-tag">Autopilot</span>
+                        </div>
+                        <p><strong>Challenge:</strong> Transition 7,000+ endpoints to modern management.</p>
+                        <p style="margin-top:0.75rem;"><strong>Solution:</strong> Co-management, Autopilot profiles, compliance policies, and automated enrollment.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-number">7,000+</span>
+                                <span class="stat-label">devices</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">compliance reporting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="bg-light">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Let's start the conversation</h3>
+                        <p style="margin-bottom:2rem; opacity:0.8;">Tell us about your infrastructure goals. We'll respond within one business day.</p>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@acension.pro</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-location-dot"></i>
+                            <span>State of Florida (remote / nationwide)</span>
+                        </div>
+                        <!-- CJIS/FedRAMP block removed -->
+                    </div>
+
+                    <div class="contact-form">
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone (optional)</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+                        </form>
+                        <p style="font-size:0.8rem; margin-top:1.5rem; color:var(--gray-mid);">
+                            <i class="fas fa-code"></i> This form is ready for your n8n automation later.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
-        <p>Contact us for more information.</p>
-        <!-- Removed the entire CJIS, FedRAMP, and state/local compliance experience line -->
+        <div class="container footer-content">
+            <div class="logo">
+                <span style="font-weight:800; font-size:1.2rem;">Acension L.L.C.</span>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div style="font-size:0.8rem; color:var(--gray-mid);">
+                © 2026 Acension L.L.C.
+            </div>
+        </div>
     </footer>
+
+    <!-- small JS for mobile menu (simple) -->
+    <script>
+        // optional: close menu when clicking a link (for mobile)
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
